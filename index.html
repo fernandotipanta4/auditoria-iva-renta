@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auditoría Preventiva · Red Neuronal IVA y Renta</title>
+<style>
+:root{--bg:#f1f5f9;--card:#fff;--ink:#1e293b;--mute:#64748b;--line:#cbd5e1;--navy:#0f2a4a;--btn:#e2e8f0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#162033;--ink:#e2e8f0;--mute:#94a3b8;--line:#334155;--btn:#334155}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#162033;--ink:#e2e8f0;--mute:#94a3b8;--line:#334155;--btn:#334155}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Segoe UI",system-ui,Arial,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+header{background:var(--navy);color:#fff;border-radius:6px;padding:18px 24px;margin-bottom:14px}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#cbd5e1;font-size:13px}
+.cols{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px}
+h3{margin:14px 0 4px;font-size:15px;color:var(--ink)}h3:first-child{margin-top:0}
+label{display:block;font-size:12px;color:var(--mute);margin:8px 0 3px}
+input,select{width:100%;padding:9px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{padding:10px 14px;border:0;border-radius:5px;background:var(--btn);color:var(--ink);font-size:14px;cursor:pointer}
+button.p{background:var(--navy);color:#fff;font-weight:600}
+.bar{display:flex;gap:10px;margin-top:16px}.bar button{flex:1}.ex{margin-top:6px;display:flex;gap:8px;flex-wrap:wrap}
+.nota{color:var(--mute);font-size:12px;margin-top:14px}
+.cred{margin-top:8px;font-size:12px;color:#cbd5e1;letter-spacing:.3px}
+.card2{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px;margin-top:16px}
+.card2 h2{margin:0 0 4px;font-size:17px}.card2 p,.card2 li{font-size:13.5px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.tabs button.on{background:var(--navy);color:#fff}
+.tab{display:none}.tab.on{display:block}
+.flow{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:10px 0}
+.flow div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;font-size:13px}.flow b{display:block}
+table.t{width:100%;border-collapse:collapse;font-size:13px}table.t th{background:var(--navy);color:#fff;text-align:left;padding:7px 9px}table.t td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+.foot{margin-top:16px;padding:12px 16px;border-top:2px solid var(--navy);font-size:13px;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+header{display:flex;gap:16px;align-items:center;background:linear-gradient(120deg,#0b1f3a,#1d4e89);box-shadow:0 4px 14px rgba(15,42,74,.25);border-radius:10px}
+.logo{width:54px;height:54px;border-radius:12px;background:#fff;color:#0f2a4a;font-weight:800;font-size:20px;display:grid;place-items:center;flex:none}
+.panel,.card2{box-shadow:0 1px 3px rgba(0,0,0,.08);border-radius:10px}
+.panel h3{padding-bottom:6px;border-bottom:1px solid var(--line);color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .panel h3{color:var(--ink)}}
+input:focus,select:focus{outline:2px solid #1d4e89;border-color:#1d4e89}
+button{transition:filter .15s}button:hover{filter:brightness(.93)}
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));margin-bottom:16px}
+.kpi{border:1px solid #cbd5e1;border-radius:8px;padding:10px 12px;background:#f8fafc}.kpi small{display:block;font-size:10.5px;color:#64748b;letter-spacing:.5px}.kpi b{font-size:16px;color:#0f2a4a}
+@media print{body *{visibility:hidden}#out,#out *{visibility:visible}#out{position:absolute;left:0;top:0;width:100%}.noprint{display:none!important}}
+</style></head><body><main>
+<header><div class="logo">AP</div><div><h1>Auditoría Preventiva · Red Neuronal IVA y Renta</h1>
+<p>Sistema de apoyo a la revisión contable: concilia la información de IVA con la de Impuesto a la Renta y estima el nivel de riesgo fiscal mediante inteligencia artificial.</p><div class="cred">Desarrollada por Fernando Tipanta · 14/11/2026 · NRC: 34801</div></div></header>
+<div class="cols">
+<section class="panel">
+<h3>1. Datos del contribuyente</h3>
+<label for="rz">Razón social / Nombre</label><input id="rz" placeholder="Ej.: Comercializadora Andina S.A.">
+<label for="pe">Período fiscal</label><select id="pe"><option>2026</option><option>2025</option><option>2024</option></select>
+<h3>2. Información de IVA (Formulario 104)</h3>
+<div class="two"><div><label for="ve">Ventas gravadas ($)</label><input id="ve" type="number" min="0" value="0"></div>
+<div><label for="co">Compras locales ($)</label><input id="co" type="number" min="0" value="0"></div></div>
+<label for="ip">IVA pagado ($)</label><input id="ip" type="number" min="0" value="0">
+<h3>3. Información de Renta (Formulario 101 / 102)</h3>
+<div class="two"><div><label for="ir">Ingresos de renta ($)</label><input id="ir" type="number" min="0" value="0"></div>
+<div><label for="ga">Gastos deducibles ($)</label><input id="ga" type="number" min="0" value="0"></div></div>
+<label for="re">Retenciones en la fuente ($)</label><input id="re" type="number" min="0" value="0">
+<div class="bar"><button id="bl">Limpiar</button><button id="bg" class="p">Generar informe</button></div>
+<h3>Casos de ejemplo</h3><div class="ex"><button id="b1">Cargar caso coherente</button><button id="b2">Cargar caso con riesgo</button></div>
+</section>
+<section id="out"></section></div>
+<section class="card2" id="histc" style="display:none"><h2>Registro de análisis (esta sesión)</h2><div style="overflow-x:auto"><table class="t" id="ht"></table></div></section>
+<section class="card2"><h2>¿Cómo se entiende este análisis?</h2><p style="color:var(--mute);margin:0">Explicación breve del tema y del funcionamiento de la red neuronal.</p>
+<div class="tabs"><button class="on" data-t="t1">1. Conceptos</button><button data-t="t2">2. Cómo funciona la red</button><button data-t="t3">3. Criterios de riesgo</button><button data-t="t4">4. Glosario</button></div>
+<div id="t1" class="tab on"><ul><li><b>IVA (Formulario 104):</b> impuesto indirecto al consumo. La empresa cobra IVA en sus ventas (15%), paga IVA en sus compras y declara la diferencia.</li><li><b>Impuesto a la Renta (Formularios 101 y 102):</b> impuesto directo sobre la utilidad del año: ingresos menos gastos deducibles.</li><li><b>Retenciones en la fuente:</b> anticipos del impuesto a la renta que otros te retienen cuando te pagan; luego se descuentan del impuesto a pagar.</li><li><b>Por qué se cruzan:</b> las ventas declaradas en IVA deberían ser coherentes con los ingresos declarados en renta. Si no cuadran, hay riesgo de observaciones de la administración tributaria. Esta herramienta hace esa revisión de forma preventiva.</li></ul></div>
+<div id="t2" class="tab"><div class="flow"><div><b>1. Datos contables</b>Los 6 valores que ingresas.</div><div><b>2. Indicadores</b>Se convierten en 5 razones comparables (por ejemplo gastos / ingresos).</div><div><b>3. Red neuronal</b>5 entradas, 2 capas ocultas (32 y 16 neuronas) y 3 salidas.</div><div><b>4. Resultado</b>Probabilidad de riesgo bajo, medio o alto.</div></div>
+<div id="dg" style="text-align:center"></div>
+<ul><li>Cada neurona multiplica sus entradas por <b>pesos</b>, los suma y aplica <b>ReLU</b>: si el resultado es negativo, lo convierte en 0.</li><li>La última capa usa <b>softmax</b>, que transforma los resultados en probabilidades que suman 100%.</li><li>Los pesos se aprendieron con <b>20.000 casos simulados</b> (80% para entrenar y 20% para probar). La precisión de 95,6% se mide contra los criterios de la pestaña 3, no contra casos reales.</li></ul></div>
+<div id="t3" class="tab"><div style="overflow-x:auto"><table class="t"><tr><th>Indicador</th><th>Cálculo</th><th>1 punto</th><th>2 puntos</th></tr>
+<tr><td>Brecha de IVA</td><td>(IVA esperado - IVA pagado) / IVA esperado. IVA esperado = 15% x (ventas - compras)</td><td>más de 5%</td><td>más de 20%</td></tr>
+<tr><td>Ingresos / Ventas</td><td>Ingresos de renta / Ventas gravadas</td><td>menos de 100%</td><td>menos de 90%</td></tr>
+<tr><td>Gastos / Ingresos</td><td>Gastos deducibles / Ingresos de renta</td><td>más de 90%</td><td>más de 100%</td></tr>
+<tr><td>Retenciones / Ingresos</td><td>Retenciones en la fuente / Ingresos de renta</td><td>más de 10%</td><td>más de 20%</td></tr>
+<tr><td>Compras / Ventas</td><td>Compras locales / Ventas gravadas</td><td>más de 100%</td><td>-</td></tr></table></div>
+<p><b>Puntaje total (máximo 9):</b> 0 a 1 = riesgo bajo · 2 a 3 = riesgo medio · 4 o más = riesgo alto. La red aprende a reproducir este criterio.</p><p style="color:var(--mute)">Estos umbrales son criterios definidos para este proyecto educativo; no son reglas oficiales del SRI.</p></div>
+<div id="t4" class="tab"><ul><li><b>Ventas gravadas:</b> ventas sobre las que se cobra IVA.</li><li><b>Compras locales:</b> compras con IVA hechas dentro del país.</li><li><b>IVA pagado:</b> IVA que el contribuyente declaró y pagó en el período.</li><li><b>Gastos deducibles:</b> gastos que la ley permite restar de los ingresos para calcular el impuesto.</li><li><b>Crédito tributario:</b> IVA pagado en compras que se descuenta del IVA cobrado en ventas.</li><li><b>Red neuronal:</b> modelo de inteligencia artificial formado por capas de neuronas que aprende de ejemplos.</li><li><b>Confianza de la red:</b> probabilidad que la red asigna al nivel de riesgo elegido.</li></ul></div></section>
+<p class="nota">Proyecto educativo. La red neuronal se entrenó con casos simulados y criterios de auditoría definidos para este proyecto; no constituye un dictamen ni un criterio oficial del SRI. Todo el cálculo se hace en tu navegador: los datos que escribes no se envían a ningún servidor.</p>
+<div class="foot"><span>Desarrollada por <b>Fernando Tipanta</b></span><span>Fecha: 14/11/2026</span><span>NRC: 34801</span></div>
+</main>
+<script>
+const NET={"W":[[[-0.85783,-0.036,-3.32505,-0.80187,-0.0,0.0,-0.45371,0.28576,0.2423,-0.67223,0.0,0.38714,-2.57566,0.12832,-2e-05,-0.08142,-0.25153,-0.0,-0.0,-0.72165,2.00649,0.55455,-0.61594,-0.0,-0.0,-0.2238,-0.0,-0.2508,-0.9499,-0.01807,-0.25233,-0.65233],[0.43655,0.8709,0.12213,0.03774,-0.0,0.0,-0.57849,0.7053,0.73771,0.2296,0.0,0.26424,0.07423,0.09429,0.06507,-0.02716,-0.84583,0.0,0.0,-0.29878,-0.49198,0.37757,-0.33331,-0.0,-0.0,-0.62332,0.0,0.54308,-0.4492,-0.40295,-0.02828,0.03237],[0.4886,-0.09158,2.08457,-0.40867,0.0,0.0,0.44989,-0.66515,-0.70986,0.5298,-0.0,-1.09648,-0.29891,0.09977,-3e-05,-0.27797,2.32657,-0.0,-0.0,-0.21436,-0.23548,0.38644,0.16653,0.0,-0.0,1.04131,0.0,0.18329,-0.33329,-0.31466,-0.1598,0.37423],[0.60349,0.04137,-0.28436,-0.06823,-0.0,0.0,0.5218,0.00351,0.4164,0.33704,0.0,0.08611,0.02118,0.89767,-0.05974,-0.85426,0.16941,0.0,-0.0,0.27606,0.05718,0.66462,0.25858,0.0,0.0,-0.46498,0.0,-0.07832,0.40724,0.0374,-0.04824,0.84142],[-0.28918,0.03101,0.17213,0.6318,-0.0,0.0,0.39425,-0.00401,0.29024,0.2047,-0.0,0.10119,-0.0134,0.00047,-0.01337,-0.01385,-0.01767,0.0,-0.0,0.17207,0.19932,-0.07744,-0.18363,0.0,0.0,-0.00263,0.0,0.27433,-0.11006,0.26591,0.99246,0.05662]],[[-0.0,0.0,0.05852,-0.0,0.29997,-0.18425,0.0,0.88788,0.67827,0.87468,0.2365,-0.0,-0.661,0.0,-0.31821,0.0],[0.0,-0.0,-3.96867,0.0,1.80264,0.9467,0.0,3.92399,3.61875,3.9703,2.45354,-0.0,-2.39272,-0.0,-4.01044,0.0],[-0.0,0.0,-0.3865,0.0,0.72059,0.80863,-0.0,0.96866,1.1388,0.53557,-0.0526,0.0,-0.53876,0.0,-0.9273,0.0],[0.0,0.0,0.29288,-0.0,0.15008,0.27536,0.0,-0.08093,0.12409,0.19443,-0.35667,-0.0,0.33389,-0.0,0.46483,0.0],[0.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,0.0],[-0.0,0.0,0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0,-0.0,0.0,-0.0,-0.0,-0.0],[0.0,-0.0,0.56871,0.0,0.00702,-0.45364,-0.0,-0.67496,-0.47697,-0.50432,0.41688,-0.0,0.54377,-0.0,0.50687,-0.0],[0.0,-0.0,-0.47456,-0.0,0.36619,0.16047,-0.0,0.7857,0.31718,0.04583,-0.18483,-0.0,0.23598,-0.0,-0.55101,-0.0],[-0.0,-0.0,-0.25871,-0.0,0.26559,0.09215,0.0,0.26997,0.16223,0.21168,-0.35718,-0.0,-0.12026,0.0,0.27157,-0.0],[0.0,0.0,0.39196,-0.0,0.35941,0.42342,0.0,0.33444,-0.22461,0.16664,0.13946,0.0,0.47481,0.0,0.49652,0.0],[0.0,0.0,0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0],[0.0,0.0,-0.09055,-0.0,-0.1615,0.3268,-0.0,-0.0591,0.30338,0.07606,0.09187,-0.0,0.23586,0.0,0.60026,0.0],[0.0,-0.0,0.86798,-0.0,-1.90172,0.3852,0.0,-0.45403,-0.40747,-1.12097,-0.45362,-0.0,1.86525,-0.0,0.9633,0.0],[-0.0,0.0,-1.23978,-0.0,-2.89421,1.64327,0.0,-0.51877,-0.16614,-0.47712,-3.46856,-0.0,2.67322,-0.0,1.39852,0.0],[-0.0,0.0,0.00013,-0.0,0.00949,-5e-05,-0.0,5e-05,-1e-05,0.00011,-0.0,-0.0,-0.00024,-0.0,-0.0,-0.0],[-0.0,0.0,-4.00007,0.0,2.39937,3.04543,0.0,6.15531,7.3629,5.54327,-0.23183,-0.0,-2.10193,-0.0,-4.90613,-0.0],[0.0,0.0,-0.71888,-0.0,1.78131,0.26788,-0.0,1.30451,0.91172,1.10616,0.19823,0.0,-1.69686,-0.0,-1.42615,-0.0],[0.0,0.0,0.0,-0.0,-0.0,0.0,0.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,-0.0,0.0],[-0.0,-0.0,-0.0,-0.0,0.0,-0.0,0.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,-0.0],[-0.0,0.0,0.68016,-0.0,-0.36916,-0.23716,0.0,-0.27824,-0.02096,0.08665,0.32722,0.0,0.33131,0.0,0.30472,-0.0],[0.0,-0.0,-1.23261,0.0,0.11158,0.28873,-0.0,1.11393,0.94865,0.34442,0.35632,0.0,-0.05896,0.0,-1.15259,0.0],[-0.0,-0.0,0.13288,-0.0,0.59135,0.25354,0.0,0.55361,0.29536,0.25047,-0.28455,0.0,0.0536,-0.0,-0.1847,-0.0],[-0.0,0.0,0.72524,0.0,-0.06502,-0.14171,0.0,-0.33199,-0.0713,-0.26205,-0.07845,0.0,0.68576,0.0,0.80248,-0.0],[-0.0,0.0,0.0,-0.0,0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,-0.0,0.0,0.0,0.0,0.0],[-0.0,-0.0,0.0,0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[-0.0,0.0,-1.64019,0.0,-1.50487,2.27946,-0.0,0.42231,1.64878,0.28187,0.43085,-0.0,1.53549,0.0,0.14073,0.0],[-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0,-0.0],[-0.0,-0.0,-0.01183,-0.0,0.41035,0.23104,-0.0,0.38945,0.55999,0.02227,0.0083,-0.0,0.32089,-0.0,-0.30724,-0.0],[0.0,0.0,0.57207,0.0,-0.44077,-0.55657,0.0,-0.82723,-0.42597,-0.64293,0.18508,0.0,0.95833,0.0,0.90585,-0.0],[0.0,0.0,0.43568,-0.0,-0.24211,0.35834,0.0,-0.15411,-0.29585,-0.14685,0.22819,0.0,0.9072,0.0,0.87135,-0.0],[0.0,0.0,-2.58815,0.0,2.34392,1.47502,-0.0,4.06948,3.52313,4.20453,0.26889,0.0,-2.53287,-0.0,-3.29288,0.0],[0.0,0.0,-0.21301,0.0,1.35736,-0.829,-0.0,0.32519,-0.00664,1.31034,0.48295,0.0,-1.66308,-0.0,-0.54746,-0.0]],[[-0.0,-0.0,0.0],[-0.0,0.0,-0.0],[2.11816,-1.86667,-0.39738],[0.0,-0.0,-0.0],[-2.93758,-3.38926,3.94691],[-0.46498,1.23591,-0.26019],[-0.0,-0.0,0.0],[-3.02354,0.38991,1.7873],[-3.53441,1.23613,1.40018],[-3.26671,-0.0463,1.92737],[0.45225,-1.9221,2.07932],[0.0,0.0,-0.0],[0.63209,0.60281,-1.5226],[0.0,-0.0,0.0],[0.58336,-0.31551,-1.61855],[-0.0,-0.0,0.0]]],"b":[[-0.44016,-0.78587,0.04493,0.3254,-0.27642,-0.38773,0.24271,-0.1257,-0.21409,0.30706,-0.14709,0.4594,0.60843,-0.85161,-0.05376,0.93844,0.48032,-0.18933,-0.34927,0.29984,0.27369,-0.26098,0.6964,-0.34911,-0.19304,0.97777,-0.2469,-0.12311,0.53134,0.977,-0.8615,-0.4687],[-0.03613,-0.06752,0.53533,-0.05208,-0.31548,0.26165,-0.19694,-0.31127,-0.31887,-0.31178,0.31861,-0.08776,0.80996,-0.06377,0.73033,-0.26033],[0.66031,0.2011,-0.14404]]},IVA=.15,NIV=[["#166534","#dcfce7","BAJO"],["#92400e","#fef3c7","MEDIO"],["#991b1b","#fee2e2","ALTO"]];
+const $=id=>document.getElementById(id),n=id=>Math.max(0,parseFloat($(id).value)||0);
+const usd=v=>"$"+v.toLocaleString("es-EC",{minimumFractionDigits:2,maximumFractionDigits:2}),pc=v=>(v*100).toLocaleString("es-EC",{minimumFractionDigits:1,maximumFractionDigits:1})+"%";
+const cl=v=>Math.min(5,Math.max(-3,v));
+function ind(v,c,ip,g,ig,r){const e=Math.max(IVA*(v-c),0);return[cl((e-ip)/Math.max(e,1)),cl(g/Math.max(ig,1)),cl(r/Math.max(ig,1)),cl(ig/Math.max(v,1)),cl(c/Math.max(v,1))]}
+function prob(x){let a=x;const L=NET.W.length;for(let l=0;l<L;l++){const o=NET.b[l].slice();for(let j=0;j<o.length;j++)for(let i=0;i<a.length;i++)o[j]+=a[i]*NET.W[l][i][j];a=l<L-1?o.map(t=>Math.max(0,t)):o}
+const m=Math.max(...a),e=a.map(t=>Math.exp(t-m)),s=e.reduce((p,q)=>p+q,0);return e.map(t=>t/s)}
+const VACIO='<div class="panel" style="text-align:center;color:var(--mute)"><b>INFORME DE AUDITORÍA PREVENTIVA</b><br><br>Complete la información del contribuyente y presione <b>Generar informe</b>.</div>';
+const CARD="font-family:'Segoe UI',Arial,sans-serif;background:#fff;color:#1e293b;border:1px solid #cbd5e1;border-radius:6px;padding:20px;";
+const TD='style="padding:8px 10px;border-bottom:1px solid #e2e8f0;color:#1e293b"',TR='style="padding:8px 10px;border-bottom:1px solid #e2e8f0;color:#1e293b;text-align:right"',TH='style="padding:8px 10px;background:#0f2a4a;color:#fff;text-align:left;font-size:12px"';
+const OK='<span style="color:#166534;font-weight:700">✓ Conforme</span>',NO='<span style="color:#991b1b;font-weight:700">⚠ Revisar</span>';
+function informe(){
+ const d=["ve","co","ip","ga","ir","re"].map(n);if(d.every(v=>v===0)){$("out").innerHTML=VACIO;return}
+ const[v,c,ip,g,ig,r]=d,x=ind(v,c,ip,g,ig,r),p=prob(x),k=p.indexOf(Math.max(...p)),[br,rg,rr,iv,rc]=x,e=Math.max(IVA*(v-c),0),[fg,bg,et]=NIV[k];
+ const pt=(br>.2?2:br>.05?1:0)+(iv<.9?2:iv<1?1:0)+(rg>1?2:rg>.9?1:0)+(rr>.2?2:rr>.1?1:0)+(rc>1?1:0);
+ HIST.unshift([$("rz").value||"Sin identificar",$("pe").value,et,pt,Math.round(p[k]*100),new Date().toLocaleTimeString("es-EC",{hour:"2-digit",minute:"2-digit"})]);HIST.length=Math.min(HIST.length,8);pintaHist();
+ const f=(a,b,ref,ok)=>`<tr><td ${TD}>${a}</td><td ${TR}>${b}</td><td ${TR}>${ref}</td><td ${TD}>${ok?OK:NO}</td></tr>`;
+ const rec=[];if(br>.05)rec.push("Conciliar el Formulario 104 (IVA) con los libros de ventas y compras del período.");
+ if(iv<1)rec.push("Conciliar las ventas del 104 con los ingresos declarados en renta y justificar las diferencias.");
+ if(rg>.9)rec.push("Verificar que los gastos tengan comprobantes de venta válidos y sean deducibles.");
+ if(rr>.1)rec.push("Cotejar las retenciones con los comprobantes de retención recibidos y el anexo transaccional.");
+ if(rc>1)rec.push("Revisar el crédito tributario acumulado y su sustento documental.");
+ if(!rec.length)rec.push("Sin observaciones: los datos son coherentes entre IVA y Renta. Mantener el respaldo documental.");
+ const hoy=new Date().toLocaleDateString("es-EC");
+ $("out").innerHTML=`<div style="${CARD}"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:2px solid #0f2a4a;padding-bottom:10px;margin-bottom:14px">
+ <div><div style="font-size:11px;color:#64748b;letter-spacing:1px">INFORME DE AUDITORÍA PREVENTIVA</div><div style="font-size:18px;font-weight:700;color:#0f2a4a">${$("rz").value.replace(/</g,"&lt;")||"Contribuyente sin identificar"}</div><div style="font-size:12px;color:#64748b">Período fiscal ${$("pe").value} · Emitido el ${hoy}</div></div>
+ <div style="background:${bg};color:${fg};border:2px solid ${fg};border-radius:6px;padding:10px 16px;text-align:center"><div style="font-size:11px;letter-spacing:1px">NIVEL DE RIESGO FISCAL</div><div style="font-size:24px;font-weight:800">${et}</div><div style="font-size:11px">Confianza de la red: ${Math.round(p[k]*100)}%</div></div></div>
+ <div class="kpis"><div class="kpi"><small>IVA ESPERADO</small><b>${usd(e)}</b></div><div class="kpi"><small>IVA PAGADO</small><b>${usd(ip)}</b></div><div class="kpi"><small>BRECHA DE IVA</small><b>${pc(Math.max(br,0))}</b></div><div class="kpi"><small>INGRESOS / VENTAS</small><b>${pc(iv)}</b></div><div class="kpi"><small>PUNTAJE</small><b>${pt} / 9</b></div></div>
+ <div style="font-weight:700;color:#0f2a4a;margin-bottom:6px">Comparativo de montos</div>${[["Ventas gravadas",v],["Ingresos de renta",ig],["Compras locales",c],["Gastos deducibles",g]].map(([t,m])=>`<div style="display:flex;align-items:center;gap:8px;font-size:12px;margin:3px 0"><span style="width:104px">${t}</span><div style="flex:1;background:#e2e8f0;border-radius:4px;height:10px"><div style="width:${(m/Math.max(v,ig,c,g,1)*100).toFixed(1)}%;background:#1d4e89;height:10px;border-radius:4px"></div></div><span style="width:96px;text-align:right">${usd(m)}</span></div>`).join("")}<div style="height:14px"></div>
+ <div style="font-weight:700;color:#0f2a4a;margin-bottom:6px">Probabilidad por nivel (salida de la red)</div>${p.map((q,i)=>`<div style="display:flex;align-items:center;gap:8px;font-size:12px;margin:3px 0"><span style="width:52px">${NIV[i][2]}</span><div style="flex:1;background:#e2e8f0;border-radius:4px;height:10px"><div style="width:${(q*100).toFixed(1)}%;background:${NIV[i][0]};height:10px;border-radius:4px"></div></div><span style="width:46px;text-align:right">${(q*100).toFixed(1)}%</span></div>`).join("")}<div style="font-size:12px;color:#64748b;margin:6px 0 14px">Puntaje por criterios de auditoría: <b>${pt} de 9</b> (0-1 bajo · 2-3 medio · 4 o más alto)</div>
+ <div style="font-weight:700;color:#0f2a4a;margin-bottom:6px">1. Conciliación IVA - Renta</div>
+ <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th ${TH}>INDICADOR</th><th ${TH}>VALOR</th><th ${TH}>REFERENCIA</th><th ${TH}>ESTADO</th></tr>
+ ${f("IVA pagado vs. IVA esperado (15% x (ventas - compras))",usd(ip)+" / "+usd(e),"brecha máx. 5%",br<=.05)}${f("Ingresos de renta / Ventas gravadas",pc(iv),"≥ 100%",iv>=1)}${f("Gastos deducibles / Ingresos de renta",pc(rg),"≤ 90%",rg<=.9)}${f("Retenciones en la fuente / Ingresos de renta",pc(rr),"≤ 10%",rr<=.1)}${f("Compras locales / Ventas gravadas",pc(rc),"≤ 100%",rc<=1)}</table></div>
+ <div style="font-weight:700;color:#0f2a4a;margin:16px 0 4px">2. Observaciones y recomendaciones</div><ul style="margin:0;padding-left:20px;font-size:13px">${rec.map(t=>`<li style="margin:4px 0">${t}</li>`).join("")}</ul>
+ <div class="noprint" style="margin-top:14px"><button onclick="window.print()">Imprimir / guardar PDF</button></div><div style="margin-top:16px;font-size:11px;color:#64748b;border-top:1px solid #e2e8f0;padding-top:8px">Informe referencial generado con una red neuronal entrenada con casos simulados. No constituye un dictamen ni un criterio oficial del SRI.</div></div>`}
+const HIST=[];
+function pintaHist(){$("histc").style.display=HIST.length?"block":"none";$("ht").innerHTML="<tr><th>Hora</th><th>Contribuyente</th><th>Período</th><th>Riesgo</th><th>Puntaje</th><th>Confianza</th></tr>"+HIST.map(h=>`<tr><td>${h[5]}</td><td>${h[0].replace(/</g,"&lt;")}</td><td>${h[1]}</td><td><b>${h[2]}</b></td><td>${h[3]} / 9</td><td>${h[4]}%</td></tr>`).join("")}
+function cargar(a){["rz","pe","ve","co","ip","ga","ir","re"].forEach((id,i)=>$(id).value=a[i]);informe()}
+$("bg").onclick=informe;$("bl").onclick=()=>{cargar(["","2026",0,0,0,0,0,0]);$("out").innerHTML=VACIO};
+$("b1").onclick=()=>cargar(["Comercializadora Andina S.A.","2026",100000,60000,6000,70000,105000,1500]);
+$("b2").onclick=()=>cargar(["Distribuidora Pichincha Cia. Ltda.","2026",100000,60000,2000,95000,80000,12000]);
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button,.tab").forEach(e=>e.classList.remove("on"));b.classList.add("on");$(b.dataset.t).classList.add("on")});
+(function(){const L=[5,7,5,3],X=[70,220,370,520],T=["Entradas (5)","Oculta 1 (32)","Oculta 2 (16)","Salida (3)"],Y=(n,j)=>n>1?30+160/(n-1)*j:110;let s='<svg viewBox="0 0 590 235" style="width:100%;max-width:640px">';
+ for(let i=0;i<3;i++)for(let a=0;a<L[i];a++)for(let b=0;b<L[i+1];b++)s+=`<line x1="${X[i]}" y1="${Y(L[i],a)}" x2="${X[i+1]}" y2="${Y(L[i+1],b)}" style="stroke:var(--line);stroke-width:1"/>`;
+ for(let i=0;i<4;i++){for(let a=0;a<L[i];a++)s+=`<circle cx="${X[i]}" cy="${Y(L[i],a)}" r="8" style="fill:${i==3?'#b45309':'var(--navy)'}"/>`;s+=`<text x="${X[i]}" y="225" text-anchor="middle" style="fill:var(--mute);font-size:12px">${T[i]}</text>`}
+ $("dg").innerHTML=s+'</svg><div style="font-size:12px;color:var(--mute)">Esquema simplificado: en las capas ocultas se muestran solo algunas neuronas.</div>'})();
+$("out").innerHTML=VACIO;
+</script></body></html>
